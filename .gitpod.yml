@@ -10,6 +10,6 @@ ports:
 tasks:
   - before: npm install -g sass
     init: echo 'init script' # runs during prebuild
-  - command: sass --watch style.scss style.css 
+  - command: sass --watch style.scss assets/style.css 
   - command: npx serv
 
