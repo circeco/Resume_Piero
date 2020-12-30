@@ -2,42 +2,154 @@
 
 $exo: 'Exo', sans-serif;
 
-body {
+$blue: #213140;
+$green: #29ab87;
+$red: #FF5252;
+
+
+* {
     margin: 0;
+    box-sizing:inherit;
+    color: white;
+    font-family: $exo;
+}
+
+html {
+    background-color: white;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+}
+
+h1 {
+    color: #FF5252;
+    font-size: 48px;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 5%;
+    text-align: center;
+    span{
+        color: $green;
+    }
 }
 
 
-.header {
+header {
     height: 30vh;
+    position: -webkit-sticky;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+
+    #photo-name-title{
+        position: absolute;
+        top: 2vh;
+        width: -webkit-fill-available;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        @extend .fadeIn;
+        align-items: center;
+        text-align: -webkit-right;
+
+        :nth-child(1) {
+            animation-delay: 2s;
+        }
+        :nth-child(2) {
+            animation-delay: 4s;
+            text-align: -webkit-left;
+        }
+    }
 
     img {
-        height: 20vh;
+        height: 15vh;
         border-radius: 50%;
-        position: relative;
-        top: -10vh; 
-        left: 3vw;
         border: solid 6px white;
+        margin: 5%;
     }
 
-    #name-title {
-        font-family: $exo;
-        position: absolute;
-        top: 20vh;
-        left: 20vw;
-        color: white;
-        font-size: 40px;
-        width: -webkit-fill-available;
-    }
+}
 
-    #name-title p {
-        margin: 1%;
-    }
+section {
+    position: relative;
+    padding-top: 20vh;
+    min-height: 100vh;
+    background-color: #213140;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
 
-    #name-title p span {
-        color: #FF5252;
+.intro {
+    @extend .fadeIn;
+    padding: 10% 15%;
+    text-align: justify;
+    line-height: 3;
+    letter-spacing: 4px;
+    font-size: 16px;
+
+    span {
+        display: inline-block;
+        width: 150px;
+        text-align: center;
     }
 }
 
+#coding {
+    @extend .fadeIn;
+    height: 80vh;
+    padding: 20vh 5% 0;
+    display: grid;
+    grid-template-columns: 33.33333% 33.33333% 33.33333%;
+    text-align: center;
+    h3 {
+        padding: 5% 0;
+    }
+    img {
+        height: 50px;
+    }
+}
+
+#timeline {
+    padding-top: 10vh;
+    grid-template-columns: 50% 50%;
+    display: grid;
+}
+
+
+
+
+/*---------------------- FADEIN EFFECTS-----*/
+
+.fadeIn {
+    animation: fadeIn 2s ease-in both;
+}
+
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+
+/*----------------------------------WAVES effect-------*/
 .box {
     width: inherit;
     height: inherit;
@@ -89,7 +201,54 @@ body {
     from { transform: rotate(360deg); }
 }
 
-#first-section {
-    height: 70vh;
-    background-color: #213140;
+
+/*-----------------------------------FADING BORDER effect---------*/
+.fade-borders::before,
+.fade-borders::after {
+  content: '';
+    z-index: 10;
+    position: fixed;
+    left: auto;
+    width: 100%;
 }
+.fade-borders::before {
+    top: 30vh;
+    height: 50px;
+    background: linear-gradient(to bottom, $blue 10%, rgba(0, 48, 243, 0) 90%);
+}
+.fade-borders::after {
+    bottom: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0, 48, 243, 0) 0%, $blue 90%);
+}
+
+
+/*------------------------------------LOOPING TEXT effect-------------*/
+#looping1::before {
+    content: '';
+    color: $green;
+    animation: keywords1 5s ease-in-out infinite;
+}
+
+@keyframes keywords1 {   
+    0% { content: 'Organised'}
+    35% { content: 'Team-player'}
+    70% { content: 'Self-starter'}
+    100% { content: 'Ambitious'}
+}
+
+#looping2::before {
+    content: '';
+    color: $green;
+    animation: keywords2 ease-in-out 5s infinite;
+}
+
+@keyframes keywords2 {
+    0% { content: 'collaborative'}
+    35% { content: 'dynamic'}
+    70% { content: 'innovative'}
+    100% { content: 'diverse'}
+}
+
+
+
