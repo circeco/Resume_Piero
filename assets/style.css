@@ -27,14 +27,11 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   text-transform: uppercase;
   padding: 5%;
   text-align: center;
-}
-h3 span {
-  color: #29ab87;
 }
 
 header {
@@ -45,27 +42,46 @@ header {
   top: 0;
   z-index: 99;
 }
-header #photo-name-title {
+header #me {
   position: absolute;
   top: 2vh;
   width: -webkit-fill-available;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 30% 70%;
   align-items: center;
   text-align: -webkit-right;
 }
-header #photo-name-title :nth-child(1) {
+header #me :nth-child(1) {
   animation-delay: 2s;
 }
-header #photo-name-title :nth-child(2) {
+header #me :nth-child(2) {
   animation-delay: 4s;
   text-align: -webkit-left;
 }
-header img {
+header #photo {
   height: 15vh;
   border-radius: 50%;
   border: solid 6px white;
   margin: 5%;
+}
+header #social {
+  text-align: center;
+  padding-left: 13%;
+  vertical-align: middle;
+}
+header #social a {
+  text-decoration: none;
+}
+header #social img:hover {
+  transform: scale(0.9, 0.9);
+}
+header #social img {
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
 }
 
 section {
@@ -75,6 +91,8 @@ section {
   background-color: #213140;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 .intro {
@@ -94,7 +112,7 @@ section {
   height: 80vh;
   padding: 20vh 5% 0;
   display: grid;
-  grid-template-columns: 33.33333% 33.33333% 33.33333%;
+  grid-template-columns: 25% 25% 25% 25%;
   text-align: center;
 }
 #coding h3 {
@@ -102,6 +120,12 @@ section {
 }
 #coding img {
   height: 50px;
+  filter: grayscale(1);
+}
+#coding span {
+  display: inline-block;
+  font-size: 10px;
+  padding: 5%;
 }
 
 #timeline {
@@ -115,18 +139,53 @@ section {
 #timeline div {
   padding: 10% 0;
 }
+#timeline p {
+  font-size: 14px;
+}
 #timeline summary {
   font-weight: 500;
   text-align: center;
   cursor: pointer;
+  color: #29ab87;
 }
 #timeline details {
   text-align: justify;
   padding: 2%;
 }
+#timeline details > summary::-webkit-details-marker {
+  color: white;
+}
+#timeline details > summary:focus {
+  outline: none;
+}
 
-/*---------------------- FADEIN EFFECTS-----*/
-.fadeIn, header #photo-name-title, .intro, #coding {
+/*---------------------- DOTS EFFECT ------*/
+.dots:after {
+  content: " ";
+  animation: dots 3s linear infinite;
+  animation-direction: alternate-reverse;
+  position: absolute;
+}
+
+@keyframes dots {
+  0% {
+    content: " ";
+  }
+  25% {
+    content: ". ";
+  }
+  50% {
+    content: ". . ";
+  }
+  75% {
+    content: ". . .";
+  }
+  100% {
+    content: ". . .";
+  }
+}
+/*---------------------- FADEIN EFFECT-----*/
+.fadeIn, header #me, .intro, #coding {
   animation: fadeIn 2s ease-in both;
 }
 

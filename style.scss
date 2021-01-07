@@ -22,7 +22,7 @@ html {
 }
 
 h1 {
-    color: #FF5252;
+    color: $red;
     font-size: 48px;
     font-weight: 300;
 }
@@ -35,14 +35,11 @@ h2 {
 }
 
 h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     text-transform: uppercase;
     padding: 5%;
     text-align: center;
-    span{
-        color: $green;
-    }
 }
 
 
@@ -54,16 +51,15 @@ header {
     top: 0;
     z-index: 99;
 
-    #photo-name-title{
+    #me{
         position: absolute;
         top: 2vh;
         width: -webkit-fill-available;
         display: grid;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 30% 70%;
         @extend .fadeIn;
         align-items: center;
         text-align: -webkit-right;
-
         :nth-child(1) {
             animation-delay: 2s;
         }
@@ -73,14 +69,36 @@ header {
         }
     }
 
-    img {
+    #photo {
         height: 15vh;
         border-radius: 50%;
         border: solid 6px white;
         margin: 5%;
     }
 
+    #social {
+        text-align: center;
+        padding-left: 13%;
+        vertical-align: middle;
+        a {
+            text-decoration: none;
+        }
+        img:hover {
+            transform: scale(0.9, 0.9);
+        }
+        img {
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.35s ease-in-out;
+            -moz-transition: all 0.35s ease-in-out;
+            -webkit-transition: all 0.35s ease-in-out;
+            -o-transition: all 0.35s ease-in-out;
+        }
+    }
 }
+
+
+
 
 section {
     position: relative;
@@ -89,6 +107,8 @@ section {
     background-color: #213140;
     scroll-snap-align: start;
     scroll-snap-stop: normal;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 .intro {
@@ -111,13 +131,19 @@ section {
     height: 80vh;
     padding: 20vh 5% 0;
     display: grid;
-    grid-template-columns: 33.33333% 33.33333% 33.33333%;
+    grid-template-columns: 25% 25% 25% 25%;
     text-align: center;
     h3 {
         padding: 5% 0;
     }
     img {
         height: 50px;
+        filter: grayscale(1);
+    }
+    span {
+        display: inline-block;
+        font-size: 10px;
+        padding: 5%;
     }
 }
 
@@ -133,21 +159,47 @@ section {
         padding: 10% 0;
     }
 
+    p {
+        font-size: 14px;
+    }
+
     summary {
         font-weight: 500;
         text-align: center;
         cursor: pointer;
+        color: $green;
     }
 
     details {
         text-align: justify;
         padding: 2%;
     }
+    details > summary::-webkit-details-marker {
+        color: white;
+    }
+    details > summary:focus {
+        outline: none;
+    }
+}
+
+/*---------------------- DOTS EFFECT ------*/
+.dots:after {
+	content: " ";
+    animation: dots 3s linear infinite;
+    animation-direction: alternate-reverse;
+    position: absolute;
+}
+
+@keyframes dots {
+    0% {content: " "}
+    25% {content: ". "}
+    50% {content: ". . "}
+    75% {content: ". . ."}
+    100% {content: ". . ."}
 }
 
 
-
-/*---------------------- FADEIN EFFECTS-----*/
+/*---------------------- FADEIN EFFECT-----*/
 
 .fadeIn {
     animation: fadeIn 2s ease-in both;
