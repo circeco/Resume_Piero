@@ -7,7 +7,7 @@
 }
 
 html {
-  background-color: white;
+  background: #29ab87;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow: scroll;
@@ -34,40 +34,43 @@ h3 {
   text-align: center;
 }
 
+section {
+  position: relative;
+  padding-top: 20vh;
+  min-height: 100vh;
+  background-color: #213140;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-padding-top: 30vh;
+}
+
 header {
-  height: 30vh;
+  height: 20vh;
   position: -webkit-sticky;
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 99;
+  z-index: 1;
 }
 header #me {
   position: absolute;
-  top: 2vh;
+  top: 1vh;
   width: -webkit-fill-available;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 20% 60% 20%;
   align-items: center;
-  text-align: -webkit-right;
-}
-header #me :nth-child(1) {
-  animation-delay: 2s;
-}
-header #me :nth-child(2) {
-  animation-delay: 4s;
-  text-align: -webkit-left;
+  text-align: center;
 }
 header #photo {
   height: 15vh;
   border-radius: 50%;
-  border: solid 6px white;
-  margin: 5%;
+  border: solid 3px white;
+  margin: 5% auto;
 }
 header #social {
-  text-align: center;
   padding-left: 13%;
-  vertical-align: middle;
 }
 header #social a {
   text-decoration: none;
@@ -84,19 +87,8 @@ header #social img {
   -o-transition: all 0.35s ease-in-out;
 }
 
-section {
-  position: relative;
-  padding-top: 20vh;
-  min-height: 100vh;
-  background-color: #213140;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-}
-
 .intro {
-  padding: 10% 15%;
+  padding: 35vh 15vw 0;
   text-align: justify;
   line-height: 3;
   letter-spacing: 4px;
@@ -109,18 +101,14 @@ section {
 }
 
 #coding {
-  height: 80vh;
-  padding: 20vh 5% 0;
+  padding: 40vh 5vw 0;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   text-align: center;
 }
-#coding h3 {
-  padding: 5% 0;
-}
 #coding img {
   height: 50px;
-  filter: grayscale(1);
+  filter: grayscale(1) brightness(1.6);
 }
 #coding span {
   display: inline-block;
@@ -129,7 +117,7 @@ section {
 }
 
 #timeline {
-  padding: 10vh;
+  padding: 30vh 5vw;
   grid-template-columns: 50% 50%;
   display: grid;
   text-align: center;
@@ -143,7 +131,7 @@ section {
   font-size: 14px;
 }
 #timeline summary {
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   cursor: pointer;
   color: #29ab87;
@@ -154,15 +142,87 @@ section {
 }
 #timeline details > summary::-webkit-details-marker {
   color: white;
+  transform: rotate(90deg);
 }
 #timeline details > summary:focus {
   outline: none;
 }
 
+/*-----------------------  MEDIA  ---------*/
+@media (max-width: 900px) {
+  h1 {
+    font-size: xx-large;
+  }
+
+  h2, h3 {
+    font-size: medium;
+  }
+
+  #social a {
+    display: block;
+  }
+
+  .intro {
+    padding: 30vh 10vw 0;
+  }
+
+  #coding {
+    padding: 30vh 10vw 0;
+    grid-template-columns: none;
+  }
+
+  #coding div {
+    display: inline;
+  }
+
+  h3 {
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: x-large;
+    padding-top: 5%;
+  }
+
+  h2, h3 {
+    font-size: small;
+  }
+
+  p {
+    font-size: x-small;
+  }
+
+  img#photo {
+    display: none;
+  }
+
+  header #social {
+    display: inline-flex;
+    padding: 2%;
+  }
+
+  header #me {
+    display: block;
+  }
+
+  header #social img {
+    height: 30px;
+  }
+
+  #coding img {
+    height: 30px;
+  }
+
+  #timeline {
+    display: block;
+    padding: 20vh 5vw;
+  }
+}
 /*---------------------- DOTS EFFECT ------*/
 .dots:after {
   content: " ";
-  animation: dots 3s linear infinite;
+  animation: dots 1s linear infinite;
   animation-direction: alternate-reverse;
   position: absolute;
 }
@@ -185,7 +245,7 @@ section {
   }
 }
 /*---------------------- FADEIN EFFECT-----*/
-.fadeIn, header #me, .intro, #coding {
+.fadeIn, header #me, header #photo, header #social, .intro p, #coding div {
   animation: fadeIn 2s ease-in both;
 }
 
@@ -212,10 +272,10 @@ section {
 .wave {
   opacity: 0.4;
   position: absolute;
-  top: 150%;
-  left: -20%;
+  top: 100%;
+  left: -10%;
   background: #213140;
-  width: 2500px;
+  width: 2000px;
   height: 2500px;
   margin-left: -250px;
   margin-top: -250px;
@@ -262,17 +322,16 @@ section {
   position: fixed;
   left: auto;
   width: 100%;
+  height: 50px;
 }
 
 .fade-borders::before {
-  top: 30vh;
-  height: 50px;
+  top: 20vh;
   background: linear-gradient(to bottom, #213140 10%, rgba(0, 48, 243, 0) 90%);
 }
 
 .fade-borders::after {
   bottom: 0;
-  height: 100px;
   background: linear-gradient(to bottom, rgba(0, 48, 243, 0) 0%, #213140 90%);
 }
 
@@ -288,7 +347,7 @@ section {
     content: "Organised";
   }
   35% {
-    content: "Team-player";
+    content: "Curious";
   }
   70% {
     content: "Self-starter";
