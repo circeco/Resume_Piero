@@ -37,7 +37,7 @@ h2 {
 
 h3 {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 200;
     text-transform: uppercase;
     padding: 5%;
     text-align: center;
@@ -111,11 +111,7 @@ header {
     letter-spacing: 4px;
     font-size: 16px;
     p {@extend .fadeIn;}
-    span {
-        display: inline-block;
-        width: 150px;
-        text-align: center;
-    }
+
 }
 
 #coding {
@@ -164,7 +160,9 @@ header {
     }
 }
 
+
 /*-----------------------  MEDIA  ---------*/
+
 @media (max-width: 900px){
     h1 {font-size: xx-large;}
     h2, h3 {font-size: medium;}
@@ -183,15 +181,17 @@ header {
     header #social {display: inline-flex; padding: 2%}
     header #me {display: block}
     header #social img {height: 30px}
+    .intro {padding: 25vh 10vw 0;}
     #coding img {height: 30px}
     #timeline {display: block; padding: 20vh 5vw;}
 }
 
 
 /*---------------------- DOTS EFFECT ------*/
+
 .dots:after {
 	content: " ";
-    animation: dots 1s linear infinite;
+    animation: dots 2s linear infinite;
     animation-direction: alternate-reverse;
     position: absolute;
 }
@@ -299,32 +299,74 @@ header {
 }
 
 
-/*------------------------------------LOOPING TEXT effect-------------*/
-#looping1::before {
-    content: '';
-    color: $green;
-    animation: keywords1 5s ease-in-out infinite;
+/*--------------------- ROLLING TEXT effect ------*/
+
+.text-scroll {
+    max-height: 22px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    vertical-align: -webkit-baseline-middle;
+    width: 150px;
+    text-align: center;
+
+    span {
+        color: $green;
+        height: 22px;
+        margin: 1%;
+        white-space: nowrap;
+        position: relative;
+        -webkit-animation: move 8s 1s infinite;
+        -moz-animation: move 8s 1s infinite;
+        -o-animation: move 8s 1s infinite;
+        -ms-animation: move 8s 1s infinite;
+        animation: move 8s 1s infinite;
+    }
 }
 
-@keyframes keywords1 {   
-    0% { content: 'Organised'}
-    35% { content: 'Curious'}
-    70% { content: 'Self-starter'}
-    100% { content: 'Ambitious'}
-}
 
-#looping2::before {
-    content: '';
-    color: $green;
-    animation: keywords2 ease-in-out 5s infinite;
-}
+  @-moz-keyframes move {
+    0%  { top:  -1em }
+    20% { top: -4em }
+    40% { top: -7em }
+    60% { top: -10em }
+    80% { top: -10em }
+    100% { top: -1em }
+  }
 
-@keyframes keywords2 {
-    0% { content: 'collaborative'}
-    35% { content: 'dynamic'}
-    70% { content: 'innovative'}
-    100% { content: 'diverse'}
-}
+  @-o-keyframes move {
+    0%  { top:  -1em }
+    20% { top: -4em }
+    40% { top: -7em }
+    60% { top: -10em }
+    80% { top: -10em }
+    100% { top: -1em }
+  }
 
+ @-ms-keyframes move {
+    0%  { top:  -1em }
+    20% { top: -4em }
+    40% { top: -7em }
+    60% { top: -10em }
+    80% { top: -10em }
+    100% { top: -1em }
+  }
 
+  @-webkit-keyframes move {
+    0%  { top:  -1em }
+    20% { top: -4em }
+    40% { top: -7em }
+    60% { top: -10em }
+    80% { top: -10em }
+    100% { top: -1em }
+  }
+
+  @keyframes move {
+    0%  { top:  -1em }
+    20% { top: -4em }
+    40% { top: -7em }
+    60% { top: -10em }
+    80% { top: -10em }
+    100% { top: -1em }
+  }
 
