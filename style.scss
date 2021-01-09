@@ -307,7 +307,7 @@ header {
     display: inline-block;
     vertical-align: middle;
     vertical-align: -webkit-baseline-middle;
-    width: 150px;
+    width: min-content;
     text-align: center;
 
     span {
