@@ -7,7 +7,7 @@
 }
 
 html {
-  background: #29ab87;
+  background: #213140;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   overflow: scroll;
@@ -52,7 +52,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 99;
 }
 header #me {
   position: absolute;
